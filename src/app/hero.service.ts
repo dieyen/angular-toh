@@ -28,11 +28,11 @@ export class HeroService {
     }
   }
 
-  getHeroes(): Observable<Hero[]>{
-    return this.http.get<Hero[]>( this.heroesUrl )
+  getHeroes(): Observable<String[]>{
+    return this.http.get<String[]>( this.heroesUrl )
     .pipe(
       tap( _ => this.log( 'fetched heroes' ) ),
-      catchError( this.handleError<Hero[]>( 'getHeroes', [] ) )
+      catchError( this.handleError<String[]>( 'getHeroes', [] ) )
     );
   }
 
@@ -45,17 +45,31 @@ export class HeroService {
     )
   }
 
-  searchHeroes(term: string): Observable<Hero[]> {
-    if ( !term.trim())  {
+  searchHeroes(term: string): Observable<String[]> {
+    if ( !term.trim() )  {
       return of( [] );
     }
-    return this.http.get<Hero[]>( `${this.heroesUrl}/?name=${term}` ).pipe(
-      tap(x => x.length ?
-        this.log( `found heroes matching "${term}"` ) :
-        this.log( `no heroes matching "${term}"` ) ),
-      catchError(
-        this.handleError<Hero[]>( 'searchHeroes', [] ) )
-    );
+
+    var results: String[] = [];
+    this.getHeroes().subscribe( result => {
+      for ( var i = 0; i < result.length; i++ ){
+        if ( result[i].includes( term ) ){
+          results.push( result[i] );
+        }
+      }
+      console.log( results );
+    });
+
+    return of(results);
+
+
+    // return this.http.get<Hero[]>( `${this.heroesUrl}/?name=${term}` ).pipe(
+    //   tap(x => x.length ?
+    //     this.log( `found heroes matching "${term}"` ) :
+    //     this.log( `no heroes matching "${term}"` ) ),
+    //   catchError(
+    //     this.handleError<Hero[]>( 'searchHeroes', [] ) )
+    // );
   }
 
   private log(message: string){

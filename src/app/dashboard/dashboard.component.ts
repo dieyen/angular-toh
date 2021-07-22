@@ -10,7 +10,7 @@ import { HeroService } from '../hero.service';
 })
 export class DashboardComponent implements OnInit {
 
-  heroes: Hero[] = [];
+  heroes: String[] = [];
 
   constructor(
     private heroService: HeroService
@@ -20,10 +20,28 @@ export class DashboardComponent implements OnInit {
     this.getHeroes();
   }
 
+  getRandom(arr: String[], n: number){
+    var result = new Array(n),
+      len = arr.length,
+      taken = new Array(len);
+
+    if ( n > len ){
+      throw new RangeError(" getRandom: More elements taken than available.")
+    }
+
+    while ( n-- ){
+      var x = Math.floor( Math.random() * len );
+      result[n] = arr[x in taken? taken[x] : x];
+      taken[x] = --len in taken ? taken[len] : len;
+    }
+
+    return result;
+  }
+
   getHeroes(): void {
     this.heroService.getHeroes()
       .subscribe( heroes => { 
-        this.heroes = heroes.slice( 1, 5 );
+        this.heroes = this.getRandom( heroes, 5 );
       });
   }
 

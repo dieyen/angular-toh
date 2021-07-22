@@ -10,7 +10,7 @@ import { MessageService } from '../message.service';
   styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
-  heroes: Hero[] = [];
+  heroes: String[] = [];
 
   constructor(
     private heroService: HeroService,

@@ -1,9 +1,9 @@
 <h2>My Heroes</h2>
 
-<ul class="heroes">
-    <li *ngFor="let hero of heroes">
-        <a routerLink="/detail/{{ hero }}">
-            <span class="badge">X</span> {{ hero }}
-        </a>
-    </li>
-</ul>
+<div class="container">
+    <div class="row row-cols-6">
+        <div class="col-4 col-lg-2 hero" *ngFor="let hero of heroes" >
+            <a class="hero-entry" routerLink="/detail/{{ hero }}">{{ hero }}</a>
+        </div>
+    </div>
+</div>
