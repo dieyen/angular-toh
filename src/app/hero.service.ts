@@ -50,6 +50,8 @@ export class HeroService {
       return of( [] );
     }
 
+    term = term.toLowerCase();
+
     var results: String[] = [];
     this.getHeroes().subscribe( result => {
       for ( var i = 0; i < result.length; i++ ){

@@ -24,4 +24,9 @@ body, input[type="text"], button {
 /* everywhere else */
 * {
     font-family: Arial, Helvetica, sans-serif;
+    --custom-black: #0B2836;
+    --custom-red: #852F5A;
+    --custom-blue: #2A1E5C;
+    --custom-green: #253031;
+    --custom-white: #F7F7F2;
 }

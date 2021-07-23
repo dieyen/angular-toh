@@ -1,24 +1,80 @@
 /* HeroDetailComponent's private CSS styles */
-label {
+/* label {
     color: #435960;
     font-weight: bold;
-  }
-  input {
-    font-size: 1em;
-    padding: .5rem;
-  }
-  button {
-    margin-top: 20px;
-    background-color: #eee;
-    padding: 1rem;
-    border-radius: 4px;
-    font-size: 1rem;
-  }
-  button:hover {
-    background-color: #cfd8dc;
-  }
-  button:disabled {
-    background-color: #eee;
-    color: #ccc;
-    cursor: auto;
-  }
+  } */
+input {
+  font-size: 1em;
+  padding: .5rem;
+}
+button {
+  margin-top: 20px;
+  background-color: var(--custom-red);
+  color: var(--custom-white);
+  padding: 1rem;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+button:hover {
+  background-color: var(--custom-blue);
+}
+button:disabled {
+  background-color: var(--custom-blue);
+  color: var(--custom-white);
+  cursor: auto;
+}
+
+h2, h3{
+  color: var(--custom-black);
+}
+
+th{
+  text-align: center;
+  vertical-align: middle;
+  width: 33.3%;
+}
+
+.hero-info{
+  text-align: center;
+  background-color: var(--custom-green);
+  color: var(--custom-white);
+  vertical-align: middle;
+}
+
+p{
+  margin-bottom: 0;
+}
+
+p.description{
+  font-style: italic;
+  font-size: 1.25em;
+}
+
+img.vision-icon, img.nation-icon, img.weapon-icon{
+  width: auto;
+  height: 40px;
+}
+
+.skill-info{
+  text-align: center;
+  color: var(--custom-black);
+  vertical-align: middle;
+}
+
+.skill-info > td > p, .constellation-info > td > p {
+  color: var(--custom-black);
+}
+.skill-description > td > p {
+  white-space: pre-line;
+}
+
+tr.constellation-info{
+  vertical-align: middle;
+}
+tr.constellation-info > td > p{
+  text-align: center;
+}
+
+tr.constellation-info > td.constellation-description > p{
+  text-align: left;
+}

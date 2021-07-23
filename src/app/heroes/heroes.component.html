@@ -1,9 +1,9 @@
-<h2>My Heroes</h2>
+<h2 style="text-align:center;">Available Heroes</h2>
 
 <div class="container">
     <div class="row row-cols-6">
         <div class="col-4 col-lg-2 hero" *ngFor="let hero of heroes" >
-            <a class="hero-entry" routerLink="/detail/{{ hero }}">{{ hero }}</a>
+            <a class="hero-entry" routerLink="/detail/{{ hero }}">{{ hero | heroName }}</a>
         </div>
     </div>
 </div>

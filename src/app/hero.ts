@@ -13,14 +13,14 @@ export interface Hero{
     constellations: Talent[]
 }
 
-interface SkillTalent{
+export interface SkillTalent{
     name: string,
     unlock: string,
     description: string,
     type: string
 }
 
-interface Talent{
+export interface Talent{
     name: string,
     unlock: string,
     description: string,

@@ -1,13 +1,182 @@
-<div *ngIf="hero">
-    <h2>{{ hero.name | uppercase }} Details</h2>
-    <div>
-        <span>vision: </span>
-        {{ hero.vision }}
-    </div>
-    <div>
-        <span>weapon: </span>
-        {{ hero.weapon }}
+<div class="container" *ngIf="hero">
+    <div id="hero-name">
+        <h1>{{ hero.name }}</h1>
     </div>
 
-    <button (click)="goBack()">go back</button>
+    <div id="hero-table">
+        <h2>Info</h2>
+        <table class="table">
+            <thead>
+                <tr class="table-dark">
+                    <th>
+                        <h5>Vision</h5>
+                    </th>
+                    <th>
+                        <h5>Weapon</h5>
+                    </th>
+                    <th>
+                        <h5>Rarity</h5>
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr class="hero-info">
+                    <td>
+                        <img class="vision-icon" src="assets/images/{{ hero.vision }}.png" />
+                        <p>{{ hero.vision }}
+                    </td>
+                    <td>
+                        <img class="weapon-icon"  src="assets/images/{{ hero.weapon }}.png" />
+                        <p>{{ hero.weapon }}
+                    </td>
+                    <td>
+                        <img src="assets/images/{{hero.rarity}}-stars.png"/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table">
+            <thead>
+                <tr class="table-dark">
+                    <th scope="col">
+                        <h5>Nation</h5>
+                    </th>
+                    <th scope="col">
+                        <h5>Affiliation</h5>
+                    </th>
+                    <th scope="col">
+                        <h5>Constellation</h5>
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr class="hero-info">
+                    <td>
+                        <img *ngIf="hero.nation" class="nation-icon" src="assets/images/{{ hero.nation }}.png" />
+                        <p>{{ hero.nation }}</p>
+                    </td>
+                    <td>
+                        <p>{{ hero.affiliation }}</p>
+                    </td>
+                    <td>
+                        <p>{{ hero.constellation }}</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="hero-description">
+        <p class="description">
+            "{{ hero.description }}"
+        </p>
+    </div>
+
+    <br/>
+
+    <div class="hero-skills">
+        <h2>Skills</h2>
+        <h3>Active Skills</h3>
+        <div class="skill-entry" *ngFor="let skill of hero.skillTalents">
+            <table class="table">
+                <thead>
+                    <tr class="table-primary">
+                        <th>
+                            <h5>Name</h5>
+                        </th>
+                        <th>
+                            <h5>Type</h5>
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr class="skill-info table-info">
+                        <td>
+                            <p>{{ skill.name }}</p>
+                        </td>
+                        <td>
+                            <p>{{ skill.unlock }}</p>
+                        </td>
+                    </tr>
+                    <tr class="skill-description table-warning">
+                        <td colspan="5">
+                            <p>{{ skill.description }}</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Passive Skills</h3>
+        <div class="passive-talent-entry" *ngFor="let passive of hero.passiveTalents">
+            <table class="table">
+                <thead>
+                    <tr class="table-primary">
+                        <th>
+                            <h5>Name</h5>
+                        </th>
+                        <th>
+                            <h5>Requirement</h5>
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr class="skill-info table-info">
+                        <td>
+                            <p>{{ passive.name }}</p>
+                        </td>
+                        <td>
+                            <p>{{ passive.unlock }}</p>
+                        </td>
+                    </tr>
+                    <tr class="skill-description table-warning">
+                        <td colspan="5">
+                            <p>{{ passive.description }}</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="hero-constellations">
+        <h2>Constellations</h2>
+            <table class="table constellations">
+                <thead>
+                    <tr class="table-primary">
+                        <th style="width: 5%;">
+                            <h5>Level</h5>
+                        </th>
+                        <th style="width: 15%">
+                            <h5>Name</h5>
+                        </th>
+                        <th>
+                            <h5>Description</h5>
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr class="constellation-info table-info" *ngFor="let constellation of hero.constellations">
+                        <td>
+                            <p>{{ constellation.level }}</p>
+                        </td>
+                        <td>
+                            <p>{{ constellation.name }}</p>
+                        </td>
+                        <td class="constellation-description">
+                            <p>{{ constellation.description }}</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+
+
+    <button class="button" (click)="goBack()">Go back</button>
 </div>
